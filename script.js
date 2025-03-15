@@ -1,6 +1,6 @@
 const inputTask = document.getElementById("inputTask");
 const addBtn = document.getElementById("addBtn")
-const taskList = document.getElementById("taskList")
+const tasksList = document.getElementById("tasksList")
 
 // Événements pour le bouton et l'input
 addBtn.addEventListener('click', addTask);
@@ -11,7 +11,7 @@ function addTask() {
     if (taskText !== ""){
         const li = document.createElement("li");
         li.textContent = taskText;
-        taskList.appendChild(li);
+        tasksList.appendChild(li);
         inputTask.value = '';
     }
 };
