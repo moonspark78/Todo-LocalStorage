@@ -1,0 +1,16 @@
+h1{
+    text-decoration: underline;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto; 
+}
+
+input{
+    width: 150px;
+    height: 20px;
+    margin-right: 4px;
+}
