@@ -9,6 +9,8 @@ const tasksList = document.getElementById("tasksList");
 // Ajoute un écouteur d'événement au bouton "Add Task" pour détecter les clics
 addBtn.addEventListener('click', addTask);
 
+document.addEventListener('DOMContentLoaded', loadTasks);
+
 function saveTasks(){
     const tasks = [];
 
@@ -21,6 +23,20 @@ function saveTasks(){
 
     //sauvegarde dans local 
     localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
+// Fonction pour charger les tâches
+function loadTasks() {
+    const savedTasks = localStorage.getItem('tasks');
+    
+    if (savedTasks) {
+        const tasks = JSON.parse(savedTasks);
+        
+        tasks.forEach(task => {
+            // Utilise la fonction createTask pour éviter la répétition
+            createTask(task.text, task.completed);
+        });
+    }
 }
 
 
@@ -69,3 +85,11 @@ function createTask(taskText, isCompleted = false) {
     return li;
 }
 
+function addTask() {
+    const taskText = inputTask.value.trim();
+    if (taskText !== "") {
+        createTask(taskText);
+        inputTask.value = "";
+        saveTasks(); // Sauvegarde après ajout
+    }
+}
