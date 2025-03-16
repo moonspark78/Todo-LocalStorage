@@ -9,6 +9,20 @@ const tasksList = document.getElementById("tasksList");
 // Ajoute un écouteur d'événement au bouton "Add Task" pour détecter les clics
 addBtn.addEventListener('click', addTask);
 
+function saveTasks(){
+    const task = [];
+
+    document.querySelectorAll('#tasksList li').forEach(li => {
+        tasksList.push({
+            text: li.querySelector('span').textContent,
+            completed: li.querySelector('span').style.textDecoration === 'line-through'
+        })
+    })
+
+    //sauvegarde dans local 
+    
+}
+
 
 // Fonction qui ajoute une tâche à la liste
 function addTask() {
@@ -19,7 +33,36 @@ function addTask() {
         // Crée un nouvel élément <li> pour afficher la tâche
         const li = document.createElement("li");
         // Définit le texte de l'élément <li> avec la valeur de l'input
-        li.textContent = taskText;
+        // Créer un span pour le texte de la tâche
+        const span = document.createElement("span");
+        span.textContent = taskText;
+
+        const completeBtn = document.createElement("button");
+        completeBtn.textContent = "Complete";
+        completeBtn.addEventListener("click", function() {
+            span.style.textDecoration = "line-through";
+        });
+
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", function() {
+            tasksList.removeChild(li);
+        });
+
+        li.appendChild(span);
+        li.appendChild(completeBtn);
+        li.appendChild(editBtn);
+        li.appendChild(deleteBtn);
+
+
+
+
+
         // Ajoute l'élément <li> à la liste <ul> (affichage de la tâche)
         tasksList.appendChild(li);
         // Réinitialise l'input pour le vider après l'ajout de la tâche

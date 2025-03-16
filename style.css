@@ -10,8 +10,8 @@ h1{
 }
 
 input{
-    width: 150px;
-    height: 20px;
+    width: 210px;
+    height: 22px;
     margin-right: 4px;
 }
 
@@ -19,4 +19,29 @@ input{
     margin-top: 20px;
     display: flex;
     justify-content: center;
+}
+
+ul {
+    padding: 0;
+    width: 80%;
+    max-width: 600px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between; /* Crée l'espace entre le texte et les boutons */
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+
+li button {
+    margin-left: 2px; /* Ajoute un peu d'espace entre les boutons */
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ddd;
 }
